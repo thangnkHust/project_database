@@ -157,7 +157,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin'], function () {
     });
 
     Route::group(['prefix' => 'ajax'], function (){
-        Route::get('/exam/{idSubject}', 'AjaxController@getExam')->name('ajaxExam');
+        Route::get('/exam/{idSubject}', 'AjaxController@getExam');
     });
 
 });
@@ -236,12 +236,24 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     ]);
 
     // ============route contact page
+    $prefix = 'contact';
     $controllerName = 'contact';
-    $controller = ucfirst($controllerName).'Controller@';
-    Route::get('contact', [
-        'as' => $controllerName,
-        'uses' => $controller.'index'
-    ]);
+    Route::group(['prefix' => $prefix], function () use($controllerName) {
+        $controller = ucfirst($controllerName).'Controller@';
+        Route::get('', [
+            'as' => $controllerName,
+            'uses' => $controller.'index'
+        ]);
+        
+        Route::post('feadback', [
+            'as' => $controllerName . '/feadback',
+            'uses' => $controller.'feadback'
+        ]);
+    });
+
+    Route::group(['prefix' => 'ajax'], function (){
+        Route::get('/exam/{idExam}', 'AjaxController@getExam')->name('examResult');
+    });
 
 
 });

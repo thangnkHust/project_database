@@ -62,7 +62,7 @@ class QuestionModel extends Model
             
         }
 
-        if($option['task'] == 'front-end-post-list-items'){
+        if($option['task'] == 'front-end-exam-list-items'){
             $result = $this->select('id', 'question', 'answer_a', 'answer_b', 'answer_c', 'answer_d', 'correct_answer')
                             ->where('exam_id', $params['exam_id'])
                             ->get();

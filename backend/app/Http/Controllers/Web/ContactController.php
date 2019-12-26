@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
-// use App\Models\PostModel as PostModel;
-// use App\Models\ExamModel as ExamModel;
-
+use Illuminate\Support\Facades\Session;
+use Mail;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -15,24 +14,28 @@ class ContactController extends Controller
     private $params = [];
 
     public function __construct(){
-        // $this->params['pagination']['totalItemPerPage'] = 10;
-        // $this->model = new MainModel;
         view()->share('controllerName', $this->controllerName);
     }
 
     public function index(Request $request){
-        // $postModel = new PostModel();
-        // $itemsPost = $postModel->listItems(null, ['task' => 'front-end-news-list-items']);
-
-        // $examModel = new ExamModel();
-        // $itemsExam = $examModel->listItems(null, ['task' => 'front-end-news-list-items']);
 
         return view($this->pathControllerView.'index',[
             'activeContact' => true,
             'params' => $this->params,
-            // 'itemsPost' => $itemsPost,
-            // 'itemsExam' => $itemsExam,
         ]);
+    }
+
+    public function feadback(Request $request){
+        if($request->method() == 'POST'){
+            $params = $request->all();
+            // print_r($params);
+            // die();
+            Mail::send('mailfb', array('name'=>$params["fullname"],'email'=>$params["email"], 'subject' => $params['subject'], 'content'=>$params['content']), function($message){
+                $message->to('thangnk.hust@gmail.com', $this->params['fullname'])->subject('Visitor Feedback!');
+            });
+            Session::flash('flash_message', 'Send message successfully!');
+            return \redirect()->route($this->controllerName);
+        }
     }
 
 }

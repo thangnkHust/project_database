@@ -51,42 +51,42 @@
             </div>
             <div class="col-md-10 col-md-offset-1 animate-box">
                 <h2>Phản hồi cho chúng tôi</h2>
-                <form action="#">
+                {!! Form::open([
+                    'url' => route("$controllerName/feadback"),
+                    'method' => 'POST',
+                    'accept-charset' => 'UTF-8',
+                    'enctype' => 'multipart/form-data',
+                    // 'class' => 'form-horizontal form-label-left',
+                    // 'id' => 'main-form'
+                ]) !!}
                     <div class="row form-group">
-                        <div class="col-md-6">
-                            <!-- <label for="fname">First Name</label> -->
-                            <input type="text" id="fname" class="form-control" placeholder="Tên">
-                        </div>
-                        <div class="col-md-6">
-                            <!-- <label for="lname">Last Name</label> -->
-                            <input type="text" id="lname" class="form-control" placeholder="Họ">
+                        <div class="col-md-12">
+                            {!! Form::text('fullname', '', ['class' => 'form-control', 'placeholder' => 'Nhập họ và tên bạn']) !!}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <!-- <label for="email">Email</label> -->
-                            <input type="text" id="email" class="form-control" placeholder="Email">
+                            {!! Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Nhập Email']) !!}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <!-- <label for="subject">Subject</label> -->
-                            <input type="text" id="subject" class="form-control" placeholder="Chủ đề">
+                            {!! Form::text('subject', '', ['class' => 'form-control', 'placeholder' => 'Nhập chủ đề']) !!}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <!-- <label for="message">Message</label> -->
-                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Hãy viết những ý kiến của bạn về chất lượng của trang web"></textarea>
+                            {!! Form::textarea('content', '', ['class' => 'form-control', 'placeholder' => 'Hãy viết những ý kiến của bạn về chất lượng của trang web', 'cols' => 30, 'rows' => 10]) !!}
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <input type="submit" value="Gửi" class="btn btn-primary">
+                        {!! Form::submit('Gửi', ['class' => 'btn btn-primary']) !!}
                     </div>
-                </form>		
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

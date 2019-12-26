@@ -41,7 +41,7 @@ class ExamController extends Controller
         $examModel = new examModel();
         $itemExam = $examModel->getItem($params, ['task' => 'front-end-exam-detail']);
         $questionModel = new QuestionModel();
-        $itemsQuestion = $questionModel->listItems($params, ['task' => 'front-end-post-list-items']);
+        $itemsQuestion = $questionModel->listItems($params, ['task' => 'front-end-exam-list-items']);
 
         // echo '<pre>';
         // print_r($itemsQuestion->toArray());

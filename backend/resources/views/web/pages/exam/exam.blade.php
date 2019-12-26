@@ -30,85 +30,136 @@
         <div class="row">
             <div class="col-10 col-md-offset-1">
                 <div class="row row-pb-lg">
-                    <div class="col-md-9 animate-box">
+                    <div class="col-md-10 animate-box">
                         <div class="classes class-single" style="border: 1px solid black">
                             <div class="desc desc2">
-                                <form action="test.php" method="post">
-                                    <!-- Cau 1 -->
+                                {!! Form::open([
+                                    'url' => route('examResult', ['idExam' => $item['id']]),
+                                    'method' => 'get',
+                                    'accept-charset' => 'UTF-8',
+                                    'enctype' => 'multipart/form-data',
+                                    // 'class' => 'form-horizontal form-label-left',
+                                    // 'id' => 'main-form'
+                                ]) !!}
+                                    <?php $tmp = 1?>
                                     <input type="hidden" value="exam1">
-                                    <label for="ques1">Câu hỏi 1: </label><br>
-                                    <span>Tìm giá trị lớn nhất M và giá trị nhỏ nhất m của y = x
-                                        <sup>4</sup> - 2x
-                                        <sup>2</sup> + 3 tr&ecirc;n [0; 2] Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odio quis eaque deleniti nam ipsam culpa. Illo atque aliquam, quibusdam, voluptatem ex sint maiores tempore nisi ipsa minus repellendus et!:
-                                    </span><br>
-                                    &nbsp;&nbsp;<input name="ques1" type="radio" value="1" />&nbsp;&nbsp;A.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques1" type="radio" value="2" />&nbsp;&nbsp;B.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques1" type="radio" value="3" />&nbsp;&nbsp;C.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques1" type="radio" value="4" />&nbsp;&nbsp;D.
-                                    <span>M= 5, m = 2</span><br><br>
-                                    <!-- Cau 2 -->
-                                    <label for="ques2">Câu hỏi 2: </label><br>
-                                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae minus numquam ea libero, aperiam similique fuga natus dignissimos rerum quisquam doloribus id in minima, sequi magnam vero consequatur earum asperiores?
-                                    </span><br>
-                                    &nbsp;&nbsp;<input name="ques2" type="radio" value="1" />&nbsp;&nbsp;A.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques2" type="radio" value="2" />&nbsp;&nbsp;B.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques2" type="radio" value="3" />&nbsp;&nbsp;C.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques2" type="radio" value="4" />&nbsp;&nbsp;D.
-                                    <span>M= 5, m = 2</span><br><br>
-                                    <!-- Cau 3 -->
-                                    <label for="ques1">Câu hỏi 3: </label><br>
-                                    <span>Tìm giá trị lớn nhất M và giá trị nhỏ nhất m của y = x
-                                        <sup>4</sup> - 2x
-                                        <sup>2</sup> + 3 tr&ecirc;n [0; 2]:
-                                    </span><br>
-                                    &nbsp;&nbsp;<input name="ques3" type="radio" value="1" />&nbsp;&nbsp;A.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques3" type="radio" value="2" />&nbsp;&nbsp;B.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques3" type="radio" value="3" />&nbsp;&nbsp;C.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques3" type="radio" value="4" />&nbsp;&nbsp;D.
-                                    <span>M= 5, m = 2</span><br><br>
-                                    <!-- Cau 4 -->
-                                    <label for="ques1">Câu hỏi 4: </label><br>
-                                    <span>Tìm giá trị lớn nhất M và giá trị nhỏ nhất m của y = x
-                                        <sup>4</sup> - 2x
-                                        <sup>2</sup> + 3 tr&ecirc;n [0; 2]:
-                                    </span><br>
-                                    &nbsp;&nbsp;<input name="ques4" type="radio" value="1" />&nbsp;&nbsp;A.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques4" type="radio" value="2" />&nbsp;&nbsp;B.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques4" type="radio" value="3" />&nbsp;&nbsp;C.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques4" type="radio" value="4" />&nbsp;&nbsp;D.
-                                    <span>M= 5, m = 2</span><br><br>
-                                    <!-- Cau 5 -->
-                                    <label for="ques1">Câu hỏi 5: </label><br>
-                                    <span>Tìm giá trị lớn nhất M và giá trị nhỏ nhất m của y = x
-                                        <sup>4</sup> - 2x
-                                        <sup>2</sup> + 3 tr&ecirc;n [0; 2]:
-                                    </span><br>
-                                    &nbsp;&nbsp;<input name="ques5" type="radio" value="1" />&nbsp;&nbsp;A.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques5" type="radio" value="2" />&nbsp;&nbsp;B.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques5" type="radio" value="3" />&nbsp;&nbsp;C.
-                                    <span>M= 5, m = 2</span><br>
-                                    &nbsp;&nbsp;<input name="ques5" type="radio" value="4" />&nbsp;&nbsp;D.
-                                    <span>M= 5, m = 2</span><br><br>
-                                    <input type="submit" value="submit" class="btn btn-primary" onclick="myFunction()">
-                                </form>
+                                    @foreach ($items as $i)
+                                        {{-- question --}}
+                                        {!! Form::label('ques' . $tmp, 'Câu hỏi ' . $tmp .':') !!}<br>
+                                        <span>{!!$i['question']!!}</span><br>
+                                        {{-- Answer A --}}
+                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 1) !!}&nbsp;&nbsp;A.
+                                        <span>{!!$i['answer_a']!!}</span><br>
+                                        {{-- Answer B --}}
+                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 2) !!}&nbsp;&nbsp;B.
+                                        <span>{!!$i['answer_b']!!}</span><br>
+                                        {{-- Answer C --}}
+                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 3) !!}&nbsp;&nbsp;C.
+                                        <span>{!!$i['answer_c']!!}</span><br>
+                                        {{-- Answer D --}}
+                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 4) !!}&nbsp;&nbsp;D.
+                                        <span>{!!$i['answer_d']!!}</span><br><br>
+
+                                        <?php $tmp += 1?>
+                                    @endforeach
+                                    {{-- Submit Form --}}
+                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'id' => 'btn-click']) !!}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3" style="background-color: red;">ABC</div>
+                    <div class="col-md-2" style="background-color: red; text-align: center">
+                        <span id="time" style="font-size: 40px; color : black;">90:00</span>
+                        <script>
+                            function startTimer(duration, display) {
+                                var timer = duration, minutes, seconds;
+                                // Countdown clock: 
+                                var timeInterval = setInterval( () => {
+                                    minutes = parseInt(timer / 60, 10)
+                                    seconds = parseInt(timer % 60, 10);
+                                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                                    $("#time").html(minutes + ":" + seconds);
+                                    timer--;
+                                }, 1000);
+
+                                // Set timeout: 
+                                var timeout = setTimeout(() => {
+                                    alert('TIME OUT!!!');
+                                    alert('Xem kết quả ở cuối trang!');
+                                    clearInterval(timeInterval);
+                                    var timeView = duration - timer - 1;
+                                    minutes = parseInt(timeView / 60, 10);
+                                    seconds = parseInt(timeView % 60, 10);
+                                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                                    var result = minutes + ":" + seconds
+                                    var idExam = "{{$item->id}}";
+                                    // Show result when timeout:
+                                    $.ajax({
+                                        url: "/ajax/exam/"+idExam,
+                                        method: "get",
+                                        data: {
+                                            time: result,
+                                        },
+                                        success: function(result){
+                                            // alert(result);
+                                            $("#result").html(result);
+                                        }
+                                    });
+                                }, duration * 1000 + 1000);
+
+                                // Cach 1:
+                                $("#btn-click").click(function(e){
+                                    if(!confirm('Bạn muốn nộp bài?')){
+                                        return false;
+                                    }
+                                    // Block submit form:
+                                    e.preventDefault();
+                                    clearInterval(timeInterval);
+                                    clearTimeout(timeout);
+                                    var timeView = duration - timer - 1;
+                                    minutes = parseInt(timeView / 60, 10);
+                                    seconds = parseInt(timeView % 60, 10);
+                                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                                    var result = minutes + ":" + seconds
+                                    var idExam = "{{$item->id}}";
+
+                                    var checked = $("input[type='radio']:checked");
+                                    console.log(checked);
+                                    $.ajax({
+                                        url: "/ajax/exam/"+idExam,
+                                        method: "get",
+                                        data: {
+                                            time: result,
+                                            // checked: checked,
+                                        },
+                                        success: function(result){
+                                            $("#result").html(result);
+                                        }
+                                    });
+                                });
+                            };
+
+                            window.onload = function () {
+                                var timer = 60 * 90,
+                                display = document.querySelector('#time');
+                                startTimer(timer, display);
+                            };
+                            
+                                // // Cach 2: 
+                                // timeInterval.onclick("#btn-click", () => {
+                                //     clearInterval(timeInterval);
+                                //     timeView = duration - timer;
+                                //     console.log(timeView);
+                                // });
+                                // }
+                        </script>
+                        
+                    </div>
+                </div>
+                <div class="row row-pb-lg" id="result">
                 </div>
             </div>
 

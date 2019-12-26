@@ -88,19 +88,19 @@ $(document).ready(function () {
     // Xu ly ajax select subject -> exam
     $("#subject").change(function(){
         var idSubject = $(this).val();
-        $.ajax("/admin/ajax/exam/"+idSubject,function(data){
-            // alert(data);
-            $("#exam_id").html(data);
-        });
-        // $.ajax({
-        //     url: '/ajaxExam',
-        //     type: 'get',
-        //     data: {
-        //         "id": idSubject,
-        //     }
-        //     success: function(respon)
-        //     // ajax
+        // $.get("/admin/ajax/exam/"+idSubject,function(data){
+        //     $("#exam_id").html(data);
         // });
+        $.ajax({
+            url: "/admin/ajax/exam/"+idSubject,
+            method: "get",
+            data: {
+
+            },
+            success: function(result){
+                $("#exam_id").html(result);
+            }
+        });
     });
 
 });

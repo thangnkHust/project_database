@@ -70,11 +70,11 @@
                             <i class="icon-check"></i>Bài viết mới</a>
                     </li>
                     <li>
-                        <a href="about.html">
+                        <a href="{{route('about')}}">
                             <i class="icon-check"></i> Về chúng tôi</a>
                     </li>
                     <li>
-                        <a href="contact.html">
+                        <a href="{{route('contact')}}">
                             <i class="icon-check"></i> Liên hệ</a>
                     </li>
                 </ul>
@@ -107,26 +107,19 @@
         </div>
     </div>
 </div>
-<div class="copy">
+{{-- <div class="copy">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <p>
                     <small class="block">&copy;
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved
-                        <!-- <i class="icon-heart" aria-hidden="true"></i> -->by
-                        <a href="https://colorlib.com" target="_blank">Thang and Thuc</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved by
+                        <a href="{{route('home')}}">Thang and Thuc</a>
                     </small>
                     <br>
-                    <!-- <small class="block">Demo Images:
-                        <a href="http://unsplash.co/" target="_blank">Unsplash</a>,
-                        <a href="http://pexels.com/" target="_blank">Pexels</a>
-                    </small> -->
                 </p>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
