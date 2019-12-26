@@ -27,23 +27,23 @@
         ],
         [
             'label' => Form::label('question', 'Question', $formLabelAttr),
-            'element' => Form::textArea('question', $item['question'], $formCkeditor)
+            'element' => Form::textArea('question', $item['question'], $formInputAttr)
         ],
         [
             'label' => Form::label('answer_a', 'Answer A', $formLabelAttr),
-            'element' => Form::textArea('answer_a', $item['answer_a'], $formCkeditor)
+            'element' => Form::textArea('answer_a', $item['answer_a'], $formInputAttr)
         ],
         [
             'label' => Form::label('answer_b', 'Answer B', $formLabelAttr),
-            'element' => Form::textArea('answer_b', $item['answer_b'], $formCkeditor)
+            'element' => Form::textArea('answer_b', $item['answer_b'], $formInputAttr)
         ],
         [
             'label' => Form::label('answer_c', 'Answer C', $formLabelAttr),
-            'element' => Form::textArea('answer_c', $item['answer_c'], $formCkeditor)
+            'element' => Form::textArea('answer_c', $item['answer_c'], $formInputAttr)
         ],
         [
             'label' => Form::label('answer_d', 'Answer D', $formLabelAttr),
-            'element' => Form::textArea('answer_d', $item['answer_d'], $formCkeditor)
+            'element' => Form::textArea('answer_d', $item['answer_d'], $formInputAttr)
         ],
         [
             'label' => Form::label('correct_answer', 'Correct Answer', $formLabelAttr),

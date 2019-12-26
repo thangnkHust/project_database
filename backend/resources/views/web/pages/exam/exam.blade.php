@@ -127,13 +127,18 @@
                                     var idExam = "{{$item->id}}";
 
                                     var checked = $("input[type='radio']:checked");
-                                    console.log(checked);
+                                    var arr = [];
+                                    $.each(checked, function( key, value ) {
+                                        arr.push(parseInt(value['value']));
+                                    });
+                                     // console.log(checked.map(a => a.value));
+                                    // console.log(checked);
                                     $.ajax({
                                         url: "/ajax/exam/"+idExam,
                                         method: "get",
                                         data: {
                                             time: result,
-                                            // checked: checked,
+                                            arr: arr,
                                         },
                                         success: function(result){
                                             $("#result").html(result);
