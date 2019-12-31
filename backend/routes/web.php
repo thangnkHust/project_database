@@ -252,7 +252,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     });
 
     Route::group(['prefix' => 'ajax'], function (){
-        Route::get('/exam/{idExam}', 'AjaxController@getExam')->name('examResult');
+        Route::get('/exam/{idExam}', 'AjaxController@getExam');
     });
 
 

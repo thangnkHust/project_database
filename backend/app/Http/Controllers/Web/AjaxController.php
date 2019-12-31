@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Web;
 use App\Models\QuestionModel as QuestionModel;
 use App\Http\Controllers\Controller;
+use App\Helpers\hightlight as hightlight;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class AjaxController extends Controller
 {
@@ -25,76 +27,93 @@ class AjaxController extends Controller
             array_push($correct_answer, $q['correct_answer']);
         }
 
-        $select_answer = $request->arr;
+        $select_answer = $request->all();
+        
+        $new_arr = [];
 
-        for($i = 0; $i < $count; $i++){
-            if(isset($select_answer[$i])){
-                if($select_answer[$i] == $correct_answer[$i]){
-                    $mark += 0.2;
+        if(isset($select_answer['arr'])){
+            foreach($select_answer['arr'] as $item){
+                $new_arr[$item['name']] = (int)$item['value'];
+            }
+        }
+
+        if($count != \count($new_arr)){
+            return response()->json(['error'=> 'Hãy điền hết các đáp án!']);
+        }else{
+            for($i = 1; $i <= $count; $i++){
+                if(isset($new_arr[$i])){
+                    if($new_arr[$i] == $correct_answer[$i-1]){
+                        $mark += 1;
+                    }
                 }
             }
+
+            if($count <= 25){
+                $table = '<tr style="background-color: rgb(13, 69, 86); color: white">';
+                for($i = 1; $i <= $count; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', $i
+                    );
+                }
+                $table .= '</tr><tr>';
+                for($i = 1; $i <= $count; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', hightlight::showAnswer($select[$new_arr[$i]], $select[$correct_answer[$i-1]])
+                    );
+                }
+                $table .= '</tr>';
+            }else{
+                $table = '<tr style="background-color: rgb(13, 69, 86); color: white">';
+                for($i = 1; $i <= 25; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', $i
+                    );
+                }
+                $table .= '</tr><tr>';
+                for($i = 1; $i <= 25; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i-1]]
+                    );
+                }
+                $table .= '</tr>';
+
+                $table .= '<tr style="background-color: rgb(13, 69, 86); color: white">';
+                for($i = 26; $i <= $count; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', $i
+                    );
+                }
+                $table .= '</tr><tr>';
+                for($i = 25; $i < $count; $i++){
+                    $table .= \sprintf(
+                        '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i-1]]
+                    );
+                }
+                $table .= '</tr>';
+            }
+            
+
+            $xhtml = \sprintf(
+                '<div style="border-radius: 10px; border: black 1px solid;border-color: black;" class="col-md-8 col-md-offset-1">
+                    <h3 style="text-align: center;">Kết Quả Bài Thi </h3>
+                    <p>User : Admin</p>
+                    <p>Tổng Điểm : %s / %s</p>
+                    <p>Thời Gian : %s</p>
+                    <div>
+                        <p>Đáp án : </p>
+                        <table class="tableStyle" border="1">
+                            <tbody>
+                                %s
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="color: red;">*Đáp án sai được tô đỏ</p>
+                </div>', $mark, $count, $time, $table
+            );
+            return response()->json(['success'=>"Nộp bài thành công!", 'result' => $xhtml]);
         }
 
-        if($count <= 25){
-            $table = '<tr style="background-color: rgb(13, 69, 86); color: white">';
-            for($i = 0; $i < $count; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $i+1
-                );
-            }
-            $table .= '</tr><tr>';
-            for($i = 0; $i < $count; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i]]
-                );
-            }
-            $table .= '</tr>';
-        }else{
-            $table = '<tr style="background-color: rgb(13, 69, 86); color: white">';
-            for($i = 0; $i < 25; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $i+1
-                );
-            }
-            $table .= '</tr><tr>';
-            for($i = 0; $i < 25; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i]]
-                );
-            }
-            $table .= '</tr>';
-
-            $table .= '<tr style="background-color: rgb(13, 69, 86); color: white">';
-            for($i = 25; $i < $count; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $i+1
-                );
-            }
-            $table .= '</tr><tr>';
-            for($i = 25; $i < $count; $i++){
-                $table .= \sprintf(
-                    '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i]]
-                );
-            }
-            $table .= '</tr>';
-        }
         
-
-        $xhtml = \sprintf(
-            '<div style="border-radius: 10px; border: black 1px solid;border-color: black;" class="col-md-8 col-md-offset-1">
-                <h3 style="text-align: center;">Kết Quả Bài Thi </h3>
-                <p>User : Admin</p>
-                <p>Tổng Điểm : %s</p>
-                <p>Thời Gian : %s</p>
-                <div>
-                    <table class="tableStyle" border="1">
-                        <tbody>
-                            %s
-                        </tbody>
-                    </table>
-                </div>
-            </div>', $mark, $time, $table
-        );
-        return $xhtml;
+        // return $xhtml;
     }
 }

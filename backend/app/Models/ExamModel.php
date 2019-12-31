@@ -92,7 +92,7 @@ class ExamModel extends Model
         if($option['task'] == 'add-item'){
             $thumb = $params['thumb'];
             $params['thumb'] = Str::random(10) . '.' . $thumb->clientExtension();
-            $thumb->storeAs('post', $params['thumb'], 'images_public');
+            $thumb->storeAs('exam', $params['thumb'], 'images_public');
             $params = array_diff_key($params, array_flip($this->crudNotAccepted));
             self::insert($params);
         }
@@ -100,10 +100,10 @@ class ExamModel extends Model
         if($option['task'] == 'edit-item'){
             // Upload new image
             if(!empty($params['thumb'])){
-                Storage::disk('images_public')->delete('post/' . $params['thumb_current']);
+                Storage::disk('images_public')->delete('exam/' . $params['thumb_current']);
                 $thumb = $params['thumb'];
                 $params['thumb'] = Str::random(10) . '.' . $thumb->clientExtension();
-                $thumb->storeAs('post', $params['thumb'], 'images_public');
+                $thumb->storeAs('exam', $params['thumb'], 'images_public');
             }
             // Don't upload new image
             $params = array_diff_key($params, array_flip($this->crudNotAccepted));
@@ -114,7 +114,7 @@ class ExamModel extends Model
     public function deleteItem($params = null, $option = null){
         if($option['task'] = 'delete-item'){
             $item = self::getItem($params, ['task' => 'get-thumb']);
-            Storage::disk('images_public')->delete('post/' . $item['thumb']);
+            Storage::disk('images_public')->delete('exam/' . $item['thumb']);
             self::where('id', $params['id'])
                 ->delete();
         }

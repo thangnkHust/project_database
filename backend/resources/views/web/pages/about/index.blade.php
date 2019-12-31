@@ -29,30 +29,35 @@
     <div class="container">
         <div class="row row-pb-md">
             <div class="col-md-8 col-md-offset-2 row-pb-md animate-box">
-                <div class="video colorlib-video" style="background-image: url(images/img_bg_1.jpg);">
-                    <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-play3"></i></a>
+            <div class="video colorlib-video" style="background-image: url({{asset('front_page/images/img_bg_1.jpg')}});">
+                    <a href="https://www.youtube.com/watch?v=VD3swXisXSM" class="popup-vimeo"><i class="icon-play3"></i></a>
                     <div class="overlay"></div>
                 </div>
             </div>
             <div class="col-md-10 col-md-offset-1 text-center animate-box">
                 <div class="about-wrap">
                     <div class="heading-2">
-                        <h2>Robust Gym the leading fitness site</h2>
+                        <h2>Cảm ơn đã vào trang web của chúng tôi</h2>
                     </div>
-                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                    <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+                    <p>Chúng tôi là sinh viên HEDSPI K62 - Đại học Bách Khoa Hà Nội.</p>
+                    <p>Đây là trang web về bài học và đề thi của các môn học lớp 12.</p>
+                    <p>Trang web này là bài tập của chúng tôi cho môn thực hành cơ sở dữ liệu</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 animate-box">
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <div class="col-md-5 animate-box">
+                <p>Địa chỉ: Số 1 Đại Cồ Việt,
+                    Quận Hai Bà Trưng, Hà Nội </p>
             </div>
-            <div class="col-md-4 animate-box">
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <div class="col-md-4 animate-box column">
+                <p>Email: info@gmail.com
+                </p>
+                <p><a href="https://www.facebook.com/thuc.manhmai" target="_blank">Facebook</a> </p>
+                <p><a href="https://www.instagram.com/khacthang150799/" target="_blank">Instagram</a> </p>
             </div>
-            <div class="col-md-4 animate-box">
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <div class="col-md-3 animate-box">
+                <p>SĐT liên hệ: 0982.999.999</p>
             </div>
         </div>
     </div>

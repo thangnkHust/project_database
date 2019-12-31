@@ -34,30 +34,29 @@
                         <div class="classes class-single" style="border: 1px solid black">
                             <div class="desc desc2">
                                 {!! Form::open([
-                                    'url' => route('examResult', ['idExam' => $item['id']]),
                                     'method' => 'get',
                                     'accept-charset' => 'UTF-8',
                                     'enctype' => 'multipart/form-data',
                                     // 'class' => 'form-horizontal form-label-left',
-                                    // 'id' => 'main-form'
+                                    'id' => 'main-form'
                                 ]) !!}
                                     <?php $tmp = 1?>
                                     <input type="hidden" value="exam1">
                                     @foreach ($items as $i)
                                         {{-- question --}}
-                                        {!! Form::label('ques' . $tmp, 'Câu hỏi ' . $tmp .':') !!}<br>
+                                        {!! Form::label($tmp, 'Câu hỏi ' . $tmp .':') !!}<br>
                                         <span>{!!$i['question']!!}</span><br>
                                         {{-- Answer A --}}
-                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 1) !!}&nbsp;&nbsp;A.
+                                        &nbsp;&nbsp;{!! Form::radio($tmp, 1) !!}&nbsp;&nbsp;A.
                                         <span>{!!$i['answer_a']!!}</span><br>
                                         {{-- Answer B --}}
-                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 2) !!}&nbsp;&nbsp;B.
+                                        &nbsp;&nbsp;{!! Form::radio($tmp, 2) !!}&nbsp;&nbsp;B.
                                         <span>{!!$i['answer_b']!!}</span><br>
                                         {{-- Answer C --}}
-                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 3) !!}&nbsp;&nbsp;C.
+                                        &nbsp;&nbsp;{!! Form::radio($tmp, 3) !!}&nbsp;&nbsp;C.
                                         <span>{!!$i['answer_c']!!}</span><br>
                                         {{-- Answer D --}}
-                                        &nbsp;&nbsp;{!! Form::radio('ques' . $tmp, 4) !!}&nbsp;&nbsp;D.
+                                        &nbsp;&nbsp;{!! Form::radio($tmp, 4) !!}&nbsp;&nbsp;D.
                                         <span>{!!$i['answer_d']!!}</span><br><br>
 
                                         <?php $tmp += 1?>
@@ -111,13 +110,9 @@
 
                                 // Cach 1:
                                 $("#btn-click").click(function(e){
-                                    if(!confirm('Bạn muốn nộp bài?')){
-                                        return false;
-                                    }
-                                    // Block submit form:
-                                    e.preventDefault();
-                                    clearInterval(timeInterval);
-                                    clearTimeout(timeout);
+                                    // if(!confirm('Bạn muốn nộp bài?')){
+                                    //     return false;
+                                    // }
                                     var timeView = duration - timer - 1;
                                     minutes = parseInt(timeView / 60, 10);
                                     seconds = parseInt(timeView % 60, 10);
@@ -126,25 +121,58 @@
                                     var result = minutes + ":" + seconds
                                     var idExam = "{{$item->id}}";
 
-                                    var checked = $("input[type='radio']:checked");
-                                    var arr = [];
-                                    $.each(checked, function( key, value ) {
-                                        arr.push(parseInt(value['value']));
-                                    });
-                                     // console.log(checked.map(a => a.value));
-                                    // console.log(checked);
-                                    $.ajax({
-                                        url: "/ajax/exam/"+idExam,
-                                        method: "get",
-                                        data: {
-                                            time: result,
-                                            arr: arr,
-                                        },
-                                        success: function(result){
-                                            $("#result").html(result);
+                                    swal({
+                                        title: "Bạn muốn nộp bài?",
+                                        icon: "warning",
+                                        buttons: true,
+                                        dangerMode: true,
+                                        })
+                                        .then((willSubmit) => {
+                                        if (willSubmit) {
+                                            $.ajax({
+                                                url: "/ajax/exam/"+idExam,
+                                                method: "get",
+                                                data:{
+                                                    time: result,
+                                                    arr: $("#main-form").serializeArray(),
+                                                },
+                                                success: function(result){
+                                                    // clearInterval(timeInterval);
+                                                    // clearTimeout(timeout);
+                                                    // $("#result").html(result);
+                                                    if($.isEmptyObject(result.error)){
+                                                        swal(result.success, "Xem kết quả ở cuối trang!", {
+                                                            icon: "success",
+                                                        });
+                                                        clearInterval(timeInterval);
+                                                        clearTimeout(timeout);
+                                                        $("#result").html(result.result);
+                                                        // $("#result").html(result.test);
+                                                    }else{
+                                                        // printErrorMsg(result.error);
+                                                        // alert(result.error);
+                                                        swal(result.error, {
+                                                            icon: "warning",
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            // swal("Your imaginary file is safe!");
                                         }
                                     });
+                                    // Block submit form:
+                                    e.preventDefault();
+                                    
+                                    // return false;
                                 });
+                                function printErrorMsg (msg) {
+                                    $(".print-error-msg").find("ul").html('');
+                                    $(".print-error-msg").css('display','block');
+                                    $.each( msg, function( key, value ) {
+                                        $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+                                    });
+                                }
                             };
 
                             window.onload = function () {
@@ -164,6 +192,10 @@
                         
                     </div>
                 </div>
+                {{-- @include('admin/templates.error') --}}
+                {{-- <div class="alert alert-danger print-error-msg" style="display:none">
+                    <ul></ul>
+                </div> --}}
                 <div class="row row-pb-lg" id="result">
                 </div>
             </div>

@@ -33,3 +33,8 @@
 </script> --}}
 {{-- Nhung comment with facebook --}}
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=497438537643875&autoLogAppEvents=1"></script>
+{{-- sweat alert --}}
+{{-- <script src="sweetalert2.all.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script> --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

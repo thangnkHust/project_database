@@ -12,4 +12,11 @@ class Hightlight{
         }
         return $input;
     }
+
+    public static function showAnswer($select_answer, $correect_answer){
+        if($select_answer != $correect_answer){
+            return \sprintf("<span style='color: red;'>%s</span>", $correect_answer);
+        }
+        return $correect_answer;
+    }
 }
