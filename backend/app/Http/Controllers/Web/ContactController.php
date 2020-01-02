@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Session;
 use Mail;
 use Illuminate\Http\Request;
 
+use \App\Mail\SendMailFeadback;
+
 class ContactController extends Controller
 {
     private $pathControllerView = 'web.pages.contact.';
@@ -28,12 +30,20 @@ class ContactController extends Controller
     public function feadback(Request $request){
         if($request->method() == 'POST'){
             $params = $request->all();
-            // print_r($params);
-            // die();
-            Mail::send('mailfb', array('name'=>$params["fullname"],'email'=>$params["email"], 'subject' => $params['subject'], 'content'=>$params['content']), function($message){
-                $message->to('thangnk.hust@gmail.com', $this->params['fullname'])->subject('Visitor Feedback!');
+            // send mail thanks
+            \Mail::to($params['email'])->send(new SendMailFeadback($params));
+            
+            // send mail storage
+            $data = array(
+                'fullname' => $params['fullname'],
+                'email' => $params['email'],
+                'content' => $params['content'],
+            );
+            Mail::send('mail.mail_storage', $data, function ($message) use($params){
+                $message->from($params['email'], $params['fullname']);
+                $message->to('elearning.website.project@gmail.com', 'E-Leanning Website');
+                $message->subject($params['subject']);
             });
-            Session::flash('flash_message', 'Send message successfully!');
             return \redirect()->route($this->controllerName);
         }
     }

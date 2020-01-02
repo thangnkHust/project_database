@@ -10,11 +10,14 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form-inline qbstp-header-subscribe">
+                    {!! Form::open([
+                        'method' =>  'POST',
+                        'url' => route("subscribe"),
+                        'class' => 'form-inline qbstp-header-subscribe'
+                    ]) !!}
                         <div class="col-three-forth">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email"
-                                    placeholder="Email của bạn">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email của bạn" required>
                             </div>
                         </div>
                         <div class="col-one-third">
@@ -22,7 +25,7 @@
                                 <button type="submit" class="btn btn-primary">Đăng ký ngay</button>
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

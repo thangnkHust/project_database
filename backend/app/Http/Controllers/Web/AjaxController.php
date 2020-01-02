@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 use App\Models\QuestionModel as QuestionModel;
+use App\Models\SampleExamModel as SampleExamModel;
 use App\Http\Controllers\Controller;
 use App\Helpers\hightlight as hightlight;
 
@@ -14,13 +15,16 @@ class AjaxController extends Controller
         // param gui tu ajax
         $idExam = $request->idExam;
         $time = $request->time;
+        
         // Get data from model
         $questionModel = new QuestionModel();
         $questions = $questionModel->listItems(['exam_id' => $idExam], ['task' => 'front-end-exam-list-items']);
+
         // define variable
         $select = [1 => 'A', 2 => 'B', 3 => 'C', 4 => 'D'];
         $mark = 0;
         $count = count($questions->toArray());
+        $temp = 10/$count;
 
         $correct_answer = [];
         foreach($questions as $q){
@@ -43,10 +47,12 @@ class AjaxController extends Controller
             for($i = 1; $i <= $count; $i++){
                 if(isset($new_arr[$i])){
                     if($new_arr[$i] == $correct_answer[$i-1]){
-                        $mark += 1;
+                        $mark += $temp;
                     }
                 }
             }
+
+            $mark = round($mark, 2);
 
             if($count <= 25){
                 $table = '<tr style="background-color: rgb(13, 69, 86); color: white">';
@@ -92,15 +98,17 @@ class AjaxController extends Controller
                 $table .= '</tr>';
             }
             
+            // Get session user after login
+            $userInfo = $request->session()->get('userInfo');
 
             $xhtml = \sprintf(
                 '<div style="border-radius: 10px; border: black 1px solid;border-color: black;" class="col-md-8 col-md-offset-1">
                     <h3 style="text-align: center;">Kết Quả Bài Thi </h3>
-                    <p>User : Admin</p>
-                    <p>Tổng Điểm : %s / %s</p>
+                    <p>User : %s</p>
+                    <p>Tổng Điểm : %s / 10</p>
                     <p>Thời Gian : %s</p>
                     <div>
-                        <p>Đáp án : </p>
+                        <p>Đáp án đúng : </p>
                         <table class="tableStyle" border="1">
                             <tbody>
                                 %s
@@ -108,8 +116,14 @@ class AjaxController extends Controller
                         </table>
                     </div>
                     <p style="color: red;">*Đáp án sai được tô đỏ</p>
-                </div>', $mark, $count, $time, $table
+                </div>', $userInfo['name'], $mark, $time, $table
             );
+            $userInfo['exam_id'] = $idExam;
+            $userInfo['mark'] = $mark;
+            $userInfo['time'] = $time;
+            $sampleExamModel = new SampleExamModel();
+            $sampleExamModel->saveItem($userInfo, ['task' => 'add-result']);
+
             return response()->json(['success'=>"Nộp bài thành công!", 'result' => $xhtml]);
         }
 

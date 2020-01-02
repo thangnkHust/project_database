@@ -123,27 +123,34 @@
                     <li class="{{$classContact}}">
                         <a href="{{route('contact')}}">Liên hệ</a>
                     </li>
-                    <li class="btn-cta">
-                        <a href="auth/index.html">
-                            <span>Đăng nhập</span>
-                        </a>
-                    </li>
-                    {{-- <li class="has-dropdown">
-                        <a style="cursor: default">
-                            <i class="fas fa-bars" style="font-size: 30px;"></i>
-                        </a>
-                        <ul class="dropdown">
-                            <li>
-                                <a href="exam.html">Admin</a>
-                            </li>
-                            <li>
-                                <a href="exam.html">Thông tin</a>
-                            </li>
-                            <li>
-                                <a href="exam.html">Đăng xuất</a>
-                            </li>
-                        </ul>
-                    </li> --}}
+
+                    @if (!session('userInfo'))
+                        <li class="btn-cta">
+                            <a href="{{route('auth/login')}}">
+                                <span>Đăng nhập</span>
+                            </a>
+                        </li>
+                    @else
+                        <li class="has-dropdown">
+                            <a style="cursor: default">
+                                {{-- <i class="fas fa-bars" style="font-size: 30px;"></i> --}}
+                                <img src="{{asset('images/user/' . session('userInfo')->avatar)}}" class="img-circle" alt="" width="50" height="50">
+                            </a>
+                            <ul class="dropdown">
+                                @if (session('userInfo')->role_id == 1)
+                                    <li>
+                                        <a href="{{route('user')}}"><i class="fas fa-users-cog"></i> Admin</a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a href="exam.html"><i class="fa fa-info-circle"></i> Thông tin</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('auth/logout')}}"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

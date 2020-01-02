@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             SubjectTableSeeder::class,
             PostTableSeeder::class,
             ExamTableSeeder::class,
+            QuestionTableSeeder::class,
+            RoleTableSeeder::class,
+            UserTableSeeder::class
             ]);
     }
 }

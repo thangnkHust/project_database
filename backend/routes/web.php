@@ -19,7 +19,7 @@ Route::get('/', function () {
 $prefixAdmin = config('test.url.prefix_admin');
 
 // group route admin
-Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => ['permission.admin']], function () {
 
     // ============route subject
     $prefix = 'subject';
@@ -160,6 +160,52 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin'], function () {
         Route::get('/exam/{idSubject}', 'AjaxController@getExam');
     });
 
+    // ============route user
+    $prefix = 'user';
+    $controllerName = 'user';
+    Route::group(['prefix' => $prefix], function () use($controllerName){
+
+        $controller = ucfirst($controllerName).'Controller@';
+
+        Route::get('/', [
+            'as' => $controllerName,
+            'uses' => $controller.'index'
+        ]);
+
+        // Route::get('form/{id?}', $controller.'form')->where('id', '[0-9]+');
+        Route::get('form/{id?}', [
+            'as' => $controllerName . '/form',
+            'uses' => $controller.'form'
+        ])->where('id', '[0-9]+');
+
+        Route::post('save', [
+            'as' => $controllerName . '/save',
+            'uses' => $controller.'save'
+        ]);
+
+        Route::post('change-password', [
+            'as' => $controllerName . '/change-password',
+            'uses' => $controller.'changePassword'
+        ]);
+
+        Route::post('change-level', [
+            'as' => $controllerName . '/change-level',
+            'uses' => $controller.'changeLevel'
+        ]);
+
+        // Route::get('delete/{id}', $controller.'delete')->where('id', '[0-9]+');
+        Route::get('delete/{id}', [
+            'as' => $controllerName. '/delete',
+            'uses' => $controller. 'delete'
+        ])->where('id', '[0-9]+');
+
+        Route::get('change-status-{status}/{id}', [
+            'as' => $controllerName. '/status',
+            'uses' => $controller. 'status'
+        ])->where('id', '[0-9]+');
+
+    });
+
 });
 
 // Group router front-end
@@ -216,7 +262,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
         ])->where('subject_name', '[0-9a-zA-Z_-]+')
         ->where('subject_id', '[0-9]+')
         ->where('exam_name', '[0-9a-zA-Z_-]+')
-        ->where('exam_id', '[0-9]+');
+        ->where('exam_id', '[0-9]+')->middleware('check.login.exam');
     });
 
     // ============route news page
@@ -254,6 +300,40 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
     Route::group(['prefix' => 'ajax'], function (){
         Route::get('/exam/{idExam}', 'AjaxController@getExam');
     });
+
+    // ============route login
+    $prefix = 'auth';
+    $controllerName = 'auth';
+    Route::group(['prefix' => $prefix], function () use($controllerName){
+        $controller = ucfirst($controllerName).'Controller@';
+
+        Route::get('/login', [
+            'as' => $controllerName . '/login',   
+            'uses' => $controller.'login'
+        ])->middleware('check.login');
+
+        Route::post('/postlogin', [
+            'as' => $controllerName . '/postlogin',   
+            'uses' => $controller.'postlogin'
+        ]);
+
+        Route::get('/logout', [
+            'as' => $controllerName . '/logout',   
+            'uses' => $controller.'logout'
+        ]);
+
+        Route::get('/register', [
+            'as' => $controllerName . '/register',
+            'uses' => $controller.'register'
+        ]);
+
+        Route::post('/postRegister', [
+            'as' => $controllerName . '/postRegister',   
+            'uses' => $controller.'postRegister'
+        ]);
+    });
+
+    Route::post('/subscribe', 'SubscribeController@index')->name('subscribe');
 
 
 });

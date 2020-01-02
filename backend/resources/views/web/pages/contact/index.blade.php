@@ -61,25 +61,26 @@
                 ]) !!}
                     <div class="row form-group">
                         <div class="col-md-12">
-                            {!! Form::text('fullname', '', ['class' => 'form-control', 'placeholder' => 'Nhập họ và tên bạn']) !!}
+                            {!! Form::text('fullname', '', ['class' => 'form-control', 'placeholder' => 'Nhập họ và tên bạn', 'required' => 'required']) !!}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            {!! Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Nhập Email']) !!}
+                            {!! Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'Nhập Email', 'required' => 'required', 'style' => 'height:50px']) !!}
+                            {{-- <input type="email" id="email" class="form-control" placeholder="Nhập Email" required> --}}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            {!! Form::text('subject', '', ['class' => 'form-control', 'placeholder' => 'Nhập chủ đề']) !!}
+                            {!! Form::text('subject', '', ['class' => 'form-control', 'placeholder' => 'Nhập chủ đề', 'required' => 'required']) !!}
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            {!! Form::textarea('content', '', ['class' => 'form-control', 'placeholder' => 'Hãy viết những ý kiến của bạn về chất lượng của trang web', 'cols' => 30, 'rows' => 10]) !!}
+                            {!! Form::textarea('content', '', ['class' => 'form-control', 'placeholder' => 'Hãy viết những ý kiến của bạn về chất lượng của trang web', 'cols' => 30, 'rows' => 10, 'required' => 'required']) !!}
                         </div>
                     </div>
 

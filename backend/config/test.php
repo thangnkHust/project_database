@@ -49,7 +49,7 @@ return [
 
         'level' => [
             'admin' => ['name' => 'Quản trị hệ thống' ],
-            'member' => ['name' => 'User']
+            'client' => ['name' => 'Người dùng khách']
         ],
 
 
@@ -64,6 +64,7 @@ return [
             'link' => ['name' => 'Search by Link'],
             'content' => ['name' => 'Search by Content'],
             'subject_id' => ['name' => 'Search by Subject'],
+            'role_id' => ['name' => 'Search by Role of User'],
         ],
 
         'button' => [
@@ -79,7 +80,7 @@ return [
             'post' => ['all', 'name', 'content', 'subject_id'],
             'exam' => ['all', 'name', 'content', 'subject_id'],
             'question' => ['all', 'name'],
-            'user' => ['all', 'username', 'email', 'fullname'],
+            'user' => ['all', 'name', 'email', 'role_id'],
             'default' => ['all', 'id', 'name']
         ],
 
@@ -89,7 +90,7 @@ return [
             'post' => ['edit', 'delete'],
             'exam' => ['edit', 'delete'],
             'question' => ['edit', 'delete'],
-            'user' => ['edit'],
+            'user' => ['edit', 'delete'],
         ]
     ]
 ];
