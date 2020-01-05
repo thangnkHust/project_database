@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9b2eaf1b996ed2319c907fc6500e825",
+    "content-hash": "a7971f2f875ed0c4feb8ff1932730a54",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -629,61 +629,6 @@
                 "trusted proxy"
             ],
             "time": "2019-09-03T16:45:42+00:00"
-        },
-        {
-            "name": "fvhockney/latexcompiler",
-            "version": "v0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fvhockney/latexcompiler.git",
-                "reference": "e7c7549edf33d5bb831e1413cc830fa0a5dd27a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fvhockney/latexcompiler/zipball/e7c7549edf33d5bb831e1413cc830fa0a5dd27a8",
-                "reference": "e7c7549edf33d5bb831e1413cc830fa0a5dd27a8",
-                "shasum": ""
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Fvhockney\\LatexCompiler\\LatexCompilerServiceProvider"
-                    ],
-                    "aliases": {
-                        "Fvlatex": "Fvhockney\\LatexCompiler\\LatexCompilerFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Fvhockney\\LatexCompiler\\": "src/",
-                    "Tests\\": "Tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fred Hockney",
-                    "email": "fvhockney@gmail.com",
-                    "homepage": "https://vernhockney.space"
-                }
-            ],
-            "description": "A LaTeX compiler for user provided data in Laravel",
-            "homepage": "https://github.com/fvhockney/latexcompiler",
-            "keywords": [
-                "laravel",
-                "latex",
-                "latex compiler"
-            ],
-            "time": "2018-06-25T11:18:21+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -3626,6 +3571,61 @@
                 "whoops"
             ],
             "time": "2019-08-07T09:00:00+00:00"
+        },
+        {
+            "name": "fvhockney/latexcompiler",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fvhockney/latexcompiler.git",
+                "reference": "e7c7549edf33d5bb831e1413cc830fa0a5dd27a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fvhockney/latexcompiler/zipball/e7c7549edf33d5bb831e1413cc830fa0a5dd27a8",
+                "reference": "e7c7549edf33d5bb831e1413cc830fa0a5dd27a8",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fvhockney\\LatexCompiler\\LatexCompilerServiceProvider"
+                    ],
+                    "aliases": {
+                        "Fvlatex": "Fvhockney\\LatexCompiler\\LatexCompilerFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fvhockney\\LatexCompiler\\": "src/",
+                    "Tests\\": "Tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fred Hockney",
+                    "email": "fvhockney@gmail.com",
+                    "homepage": "https://vernhockney.space"
+                }
+            ],
+            "description": "A LaTeX compiler for user provided data in Laravel",
+            "homepage": "https://github.com/fvhockney/latexcompiler",
+            "keywords": [
+                "laravel",
+                "latex",
+                "latex compiler"
+            ],
+            "time": "2018-06-25T11:18:21+00:00"
         },
         {
             "name": "fzaninotto/faker",

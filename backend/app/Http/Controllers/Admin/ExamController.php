@@ -69,6 +69,14 @@ class ExamController extends Controller
                 $task = 'edit-item';
                 $notify = 'Update item successfully';
             }
+            $subjectModel = new SubjectModel();
+            $params['subject'] = $subjectModel::select('name')->where('id', $params['subject_id'])->first()['name'];
+            $subscribeModel = new SubscribeModel();
+            // send list mail subscribe
+            $subscribeItems = $subscribeModel::select('email')->get();
+            foreach($subscribeItems as $item){
+                \Mail::to($item['email'])->send(new SendMailNew($params));
+            }
             $this->model->saveItem($params, ['task' => $task]);
             return \redirect()->route($this->controllerName)->with('notify', $notify);
         }

@@ -331,9 +331,28 @@ Route::group(['prefix' => '/', 'namespace' => 'Web'], function () {
             'as' => $controllerName . '/postRegister',   
             'uses' => $controller.'postRegister'
         ]);
+
+        Route::get('/profile-{id}', [
+            'as' => $controllerName . '/profile',
+            'uses' => $controller.'profile'
+        ]);
+
+        Route::post('/postProfile', [
+            'as' => $controllerName . '/postProfile',   
+            'uses' => $controller.'postProfile'
+        ]);
+
+        Route::get('/pass', [
+            'as' => $controllerName . '/pass',
+            'uses' => $controller.'pass'
+        ]);
+
+        Route::post('/postPass', [
+            'as' => $controllerName . '/postPass',   
+            'uses' => $controller.'postPass'
+        ]);
     });
 
     Route::post('/subscribe', 'SubscribeController@index')->name('subscribe');
-
 
 });

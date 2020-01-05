@@ -61,5 +61,45 @@ class AuthController extends Controller
         }
         // return view($this->pathControllerView.'postlogin');
     }
+
+    public function profile(Request $request){
+        $id = $request->id;
+        $userModel = new UserModel();
+        $items = $userModel::select('name', 'email', 'avatar')->where('id', $id)->get()[0];
+        return view($this->pathControllerView.'profile',[
+            'items' => $items,
+        ]);
+    }
+
+    public function postProfile(Request $request){
+        if($request->email != session('userInfo')->email){
+            return \redirect()->route('auth/profile', ['id' => session('userInfo')->id])->with('notify', 'Bạn đã nhập sai Email!');
+        }
+        $userModel = new UserModel();
+        $params = $request->all();
+        $userModel->saveItem($params, ['task' => 'edit-profile']);
+        return \redirect()->route('auth/profile', ['id' => session('userInfo')->id])->with('success', 'Cập nhật tài khoản thành công!');
+    }
+
+    public function pass(Request $request){
+        return view($this->pathControllerView.'pass');
+    }
+
+    public function postPass(Request $request){
+        $params = $request->all();
+        // \dd($params);
+        if(md5($params['password_current']) != session('userInfo')->password){
+            return \redirect()->route('auth/pass')->with('notify', 'Bạn đã nhập sai mật khẩu hiện tại!');
+        }
+        if($params['password_new'] != $params['password_new_confirm']){
+            return \redirect()->route('auth/pass')->with('notify', 'Nhập lại mật khẩu sai!');
+        }
+        if(md5($params['password_new']) == session('userInfo')->password){
+            return \redirect()->route('auth/pass')->with('notify', 'Mật khẩu mới phải khác mật khẩu hiện tại!');
+        }
+        $userModel = new UserModel();
+        $userModel->saveItem($params, ['task' => 'edit-password']);
+        return \redirect()->route('auth/pass')->with('success', 'Cập nhật mật khẩu thành công!');
+    }
 }
 

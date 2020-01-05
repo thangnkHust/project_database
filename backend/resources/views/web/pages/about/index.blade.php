@@ -51,10 +51,10 @@
                     Quận Hai Bà Trưng, Hà Nội </p>
             </div>
             <div class="col-md-4 animate-box column">
-                <p>Email: info@gmail.com
+                <p><a href="mailto:elearning.website.project@gmail.com"> Email: elearning.website.project@gmail.com</a>
                 </p>
-                <p><a href="https://www.facebook.com/thuc.manhmai" target="_blank">Facebook</a> </p>
-                <p><a href="https://www.instagram.com/khacthang150799/" target="_blank">Instagram</a> </p>
+                <p><a href="https://www.facebook.com/thuc.manhmai" target="_blank">Facebook: Mai Mạnh Thục</a> </p>
+                <p><a href="https://www.instagram.com/khacthang150799/" target="_blank">Instagram: Nguyễn Khăc Thắng</a></p>
             </div>
             <div class="col-md-3 animate-box">
                 <p>SĐT liên hệ: 0982.999.999</p>

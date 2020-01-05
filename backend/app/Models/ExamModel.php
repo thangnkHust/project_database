@@ -15,7 +15,7 @@ class ExamModel extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fieldSearchAccepted = [
-        'id', 'name','content', 'subject_id'
+        'id', 'name', 'subject_id'
     ];
     protected $crudNotAccepted = [
         '_token', 'thumb_current'
@@ -160,6 +160,10 @@ class ExamModel extends Model
             }
             $result = $query->get()
                             ->toArray();   
+        }
+
+        if($option['task'] == 'web-count-items'){
+            $result = self::select(DB::raw('count(id) as count'))->where('status', 'active')->get()->toArray();
         }
         return $result;
     }

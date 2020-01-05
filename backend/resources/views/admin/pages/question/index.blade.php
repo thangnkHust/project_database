@@ -3,11 +3,11 @@
 
 {{-- Phan them le cua page slider --}}
 @section('content')
-@php
+{{-- @php
     use App\Helpers\template as template;
     // $xhtmlButtonFilter = template::showButtonFilter($controllerName, $itemsStatusCount, $params['filter']['status'], $params['search']);
     $xhtmlAreaSearch = template::showAreaSearch($controllerName, $params['search']);
-@endphp
+@endphp --}}
 <div class="page-header zvn-page-header clearfix">
     <div class="zvn-page-header-title">
         <h3>Question Management</h3>
@@ -20,23 +20,7 @@
 
 @include('admin/templates/notify')
 
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            @include('admin/templates.x-title', ['title' => 'Filter'])
-            <div class="x_content">
-                <div class="row">
-                    <div class="col-md-6">
-                        {{-- {!!$xhtmlButtonFilter!!} --}}
-                    </div>
-                    <div class="col-md-6">
-                        {!!$xhtmlAreaSearch!!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!--box-lists-->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">

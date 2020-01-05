@@ -62,7 +62,9 @@ class SubjectController extends Controller
 
     public function save(MainRequest $request){
         if($request->method() == 'POST'){
+            $validated = $request->validated();
             $params = $request->all();
+            \dd($validated);
             $task = 'add-item';
             $notify = 'Add item successfully';
 

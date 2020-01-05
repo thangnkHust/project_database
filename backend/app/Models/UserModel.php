@@ -89,10 +89,30 @@ class UserModel extends Model
                 $thumb = $params['avatar'];
                 $params['avatar'] = Str::random(10) . '.' . $thumb->clientExtension();
                 $thumb->storeAs('user', $params['avatar'], 'images_public');
+                \session('userInfo')->avatar = $params['avatar'];
             }
             // Don't upload new image
             $params = array_diff_key($params, array_flip($this->crudNotAccepted));
             self::where('id', $params['id'])->update($params);
+        }
+
+        if($option['task'] == 'edit-profile'){
+            // Upload new image
+            if(!empty($params['avatar'])){
+                Storage::disk('images_public')->delete('user/' . $params['avatar_current']);
+                $thumb = $params['avatar'];
+                $params['avatar'] = Str::random(10) . '.' . $thumb->clientExtension();
+                $thumb->storeAs('user', $params['avatar'], 'images_public');
+                \session('userInfo')->avatar = $params['avatar'];
+            }
+            // Don't upload new image
+            $params = array_diff_key($params, array_flip($this->crudNotAccepted));
+            self::where('email', $params['email'])->update($params);
+        }
+
+        if($option['task'] == 'edit-password'){
+            self::where('email', \session('userInfo')->email)->update(['password' => md5($params['password_new'])]);
+            \session('userInfo')->password = md5($params['password_new']);
         }
 
         if($option['task'] == 'change-level-user'){
@@ -163,6 +183,10 @@ class UserModel extends Model
             }
             $result = $query->get()
                             ->toArray();   
+        }
+
+        if($option['task'] == 'web-count-items'){
+            $result = self::select(DB::raw('count(id) as count'))->where('status', 'active')->get()->toArray();
         }
         return $result;
     }

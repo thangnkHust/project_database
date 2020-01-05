@@ -37,7 +37,7 @@ class PostRequest extends FormRequest
             'content' => 'bail|required|min:5',
             'status' => 'bail|in:active,inactive',
             // 'category' => 'bail|in:',
-            'thumb' => $condThumb
+            'thumb' => $condThumb,
         ];
     }
 
@@ -50,10 +50,8 @@ class PostRequest extends FormRequest
     public function attributes()
     {
         return [
-            // 'description' => 'Feild Description: ',
             // 'status' => 'Feild Status: ',
             // 'name' => 'Feild Name: ',
-            // 'link' => 'Feild Link: ',
         ];
     }
 }

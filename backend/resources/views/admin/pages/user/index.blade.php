@@ -10,7 +10,7 @@
 @endphp
 <div class="page-header zvn-page-header clearfix">
     <div class="zvn-page-header-title">
-        <h3>Post Management</h3>
+        <h3>User Management</h3>
     </div>
     <div class="zvn-add-new pull-right">
         <a href="{{route($controllerName.'/form')}}" class="btn btn-success"><i

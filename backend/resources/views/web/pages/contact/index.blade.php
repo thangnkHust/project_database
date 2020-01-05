@@ -40,10 +40,10 @@
                                 <p><span><i class="icon-phone3"></i></span> <a href="tel://0982999999">0982.999.999</a></p>
                             </div>
                             <div class="con-info">
-                                <p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                                <p><span><i class="icon-paperplane"></i></span> <a href="mailto:elearning.website.project@gmail.com"> elearning.website</a></p>
                             </div>
                             <div class="con-info">
-                                <p><span><i class="icon-globe"></i></span> <a href="#">study.com</a></p>
+                                <p><span><i class="icon-globe"></i></span> <a href="#"> elearning.com</a></p>
                             </div>
                         </div>
                     </div>

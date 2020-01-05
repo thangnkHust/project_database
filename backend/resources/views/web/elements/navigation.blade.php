@@ -143,8 +143,13 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="exam.html"><i class="fa fa-info-circle"></i> Thông tin</a>
+                                    <a href="{{route('auth/profile', ['id' => session('userInfo')->id])}}"><i class="fa fa-info-circle"></i> Thông tin</a>
                                 </li>
+
+                                <li>
+                                    <a href="{{route('auth/pass')}}"><i class="fas fa-key"></i> Mật khẩu</a>
+                                </li>
+
                                 <li>
                                     <a href="{{route('auth/logout')}}"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a>
                                 </li>

@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Http\Request;
 use App\Models\PostModel as MainModel;
 use App\Models\SubjectModel as SubjectModel;
-use App\Http\Requests\PostRequest as MainRequest;
+use App\Models\SubscribeModel as SubscribeModel;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest as MainRequest;
 
-use Illuminate\Http\Request;
+use \App\Mail\SendMailNew;
 
 class PostController extends Controller
 {
@@ -70,6 +72,14 @@ class PostController extends Controller
                 $notify = 'Update item successfully';
             }
             $this->model->saveItem($params, ['task' => $task]);
+            $subjectModel = new SubjectModel();
+            $params['subject'] = $subjectModel::select('name')->where('id', $params['subject_id'])->first()['name'];
+            $subscribeModel = new SubscribeModel();
+            // send list mail subscribe
+            $subscribeItems = $subscribeModel::select('email')->get();
+            foreach($subscribeItems as $item){
+                \Mail::to($item['email'])->send(new SendMailNew($params));
+            }
             return \redirect()->route($this->controllerName)->with('notify', $notify);
         }
     }

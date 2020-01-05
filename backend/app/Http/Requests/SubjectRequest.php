@@ -44,10 +44,10 @@ class SubjectRequest extends FormRequest
 
     public function attributes()
     {
-       return [
+        return [
             // 'description' => 'Feild Description: ',
-            // 'status' => 'Feild Status: ',
-            // 'name' => 'Feild Name: ',
+            'status' => 'Feild Status: ',
+            'name' => 'Feild Name: ',
             // 'link' => 'Feild Link: ',
         ];
     }

@@ -30,7 +30,7 @@
                             $content = hightlight::show($val->content, $params['search'], 'content');
                             $thumb = template::showItemThumb($controllerName, $val->thumb, $val->name);
                             $status = template::showItemStatus($controllerName, $id, $val->status);
-                            $subject = $val->subject->name;
+                            $subject = hightlight::show($val->subject->name, $params['search'], 'subject_id');
                             $createdHistory = template::showItemHistory($val->created_at);
                             $updatedHistory = template::showItemHistory($val->updated_at);
                             $listButtonAction = template::showActionButton($controllerName, $id);

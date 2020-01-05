@@ -154,6 +154,10 @@ class PostModel extends Model
             $result = $query->get()
                             ->toArray();   
         }
+
+        if($option['task'] == 'web-count-items'){
+            $result = self::select(DB::raw('count(id) as count'))->where('status', 'active')->get()->toArray();
+        }
         return $result;
     }
     

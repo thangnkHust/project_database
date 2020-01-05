@@ -16,7 +16,7 @@
     <div class="menu_section">
         <h3>Menu</h3>
         <ul class="nav side-menu">
-            <li><a href="#"><i class="fa fa-home"></i> Dashboard</a></li>
+            <li><a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a></li>
             <li><a href="{{route('user')}}"><i class="fa fa-user"></i> User</a></li>
             <li><a href="{{route('subject')}}"><i class="fa fa-book"></i> Subject</a></li>
             <li><a href="{{route('post')}}"><i class="fa fa-newspaper-o"></i> Post</a></li>

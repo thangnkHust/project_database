@@ -96,12 +96,12 @@
                         <i class="icon-phone"></i> 0982.999.999</a>
                 </li>
                 <li>
-                    <a href="mailto:info@yoursite.com">
-                        <i class="icon-envelope"></i> info@yoursite.com</a>
+                    <a href="mailto:elearning.website.project@gmail.com">
+                        <i class="icon-envelope"></i> elearning.website.project</a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="icon-location4"></i> study.com</a>
+                        <i class="icon-location4"></i> elearning.com</a>
                 </li>
             </ul>
         </div>

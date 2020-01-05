@@ -26,4 +26,5 @@ class SubscribeModel extends Model
         }
         return $result;
     }
+
 }

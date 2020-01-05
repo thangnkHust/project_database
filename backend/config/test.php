@@ -78,7 +78,7 @@ return [
         'search' => [
             'subject' => ['all', 'name', 'description'],
             'post' => ['all', 'name', 'content', 'subject_id'],
-            'exam' => ['all', 'name', 'content', 'subject_id'],
+            'exam' => ['all', 'name', 'subject_id'],
             'question' => ['all', 'name'],
             'user' => ['all', 'name', 'email', 'role_id'],
             'default' => ['all', 'id', 'name']

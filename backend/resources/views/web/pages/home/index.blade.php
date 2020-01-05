@@ -225,31 +225,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="col-md-3 col-sm-6 animate-box">
+                <div class="col-md-4 col-sm-6 animate-box">
                     <div class="counter-entry">
                         <span class="icon">
                             <i class="flaticon-book"></i>
                         </span>
                         <div class="desc">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="10"
+                            <span class="colorlib-counter js-counter" data-from="0" data-to="{{$countItems}}"
                                 data-speed="1800" data-refresh-interval="50"></span>
-                            <span class="colorlib-counter-label">Courses</span>
+                            <span class="colorlib-counter-label">Posts</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 animate-box">
+                <div class="col-md-4 col-sm-6 animate-box">
                     <div class="counter-entry">
                         <span class="icon">
                             <i class="flaticon-student"></i>
                         </span>
                         <div class="desc">
-                            <span class="colorlib-counter js-counter" data-from="0" data-to="3653"
-                                data-speed="5000" data-refresh-interval="50"></span>
+                            <span class="colorlib-counter js-counter" data-from="0" data-to="{{$countUser}}"
+                                data-speed="1800" data-refresh-interval="50"></span>
                             <span class="colorlib-counter-label">Students</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 animate-box">
+                {{-- <div class="col-md-3 col-sm-6 animate-box">
                     <div class="counter-entry">
                         <span class="icon">
                             <i class="flaticon-professor"></i>
@@ -260,8 +260,8 @@
                             <span class="colorlib-counter-label">Teachers</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 animate-box">
+                </div> --}}
+                <div class="col-md-4 col-sm-6 animate-box">
                     <div class="counter-entry">
                         <span class="icon">
                             <i class="flaticon-earth-globe"></i>
