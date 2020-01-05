@@ -76,10 +76,13 @@ class PostController extends Controller
             $params['subject'] = $subjectModel::select('name')->where('id', $params['subject_id'])->first()['name'];
             $subscribeModel = new SubscribeModel();
             // send list mail subscribe
-            $subscribeItems = $subscribeModel::select('email')->get();
-            foreach($subscribeItems as $item){
-                \Mail::to($item['email'])->send(new SendMailNew($params));
+            if($params['id'] == null){
+                $subscribeItems = $subscribeModel::select('email')->get();
+                foreach($subscribeItems as $item){
+                    \Mail::to($item['email'])->send(new SendMailNew($params));
+                }
             }
+            
             return \redirect()->route($this->controllerName)->with('notify', $notify);
         }
     }

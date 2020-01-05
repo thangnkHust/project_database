@@ -169,7 +169,7 @@
 </div>
 
 
-<div id="colorlib-services">
+{{-- <div id="colorlib-services">
     <div class="container">
         <div class="row">
             <div class="col-md-3 text-center animate-box">
@@ -213,6 +213,56 @@
                     <div class="desc">
                         <h3>Validated Certificate</h3>
                         <p>Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<div id="colorlib-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-book"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Bài học theo sát SGK</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-books"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Đa dạng</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-market"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Thi thử dễ dàng</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+                <div class="services">
+                    <span class="icon">
+                        <i class="flaticon-earth-globe"></i>
+                    </span>
+                    <div class="desc">
+                        <h3>Bản tin hữu ích</h3>
+                        <p></p>
                     </div>
                 </div>
             </div>

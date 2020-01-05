@@ -78,7 +78,7 @@ class AjaxController extends Controller
                 $table .= '</tr><tr>';
                 for($i = 1; $i <= 25; $i++){
                     $table .= \sprintf(
-                        '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i-1]]
+                        '<td style="padding: 4px; width: 30px">%s</td>', hightlight::showAnswer($select[$new_arr[$i]], $select[$correct_answer[$i-1]])
                     );
                 }
                 $table .= '</tr>';
@@ -92,7 +92,7 @@ class AjaxController extends Controller
                 $table .= '</tr><tr>';
                 for($i = 25; $i < $count; $i++){
                     $table .= \sprintf(
-                        '<td style="padding: 4px; width: 30px">%s</td>', $select[$correct_answer[$i-1]]
+                        '<td style="padding: 4px; width: 30px">%s</td>', hightlight::showAnswer($select[$new_arr[$i]], $select[$correct_answer[$i-1]])
                     );
                 }
                 $table .= '</tr>';
